@@ -12,7 +12,6 @@ import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
 
 buildscript {
-
     dependencies {
         classpath 'org.postgresql:postgresql:42.5.1'
         // for processing the index.html at build time
@@ -221,6 +220,11 @@ dependencies {
 
     testImplementation 'org.seleniumhq.selenium:selenium-java:4.26.0'
 
+    // For Apple Sign-In JWT generation
+    implementation "io.jsonwebtoken:jjwt-api:0.11.5"
+    runtimeOnly "io.jsonwebtoken:jjwt-impl:0.11.5"
+    runtimeOnly "io.jsonwebtoken:jjwt-jackson:0.11.5"
+
     //errorprone('com.google.errorprone:error_prone_core:2.24.0')
 }
 
@@ -341,8 +345,8 @@ bootRun {
         opts += externalConfig.readLines()
     }
     jvmArgs = opts
-    dependsOn 'copyFrontendDev'
-    classpath(layout.buildDirectory.dir('index-transformed'), layout.buildDirectory.dir('frontend-dev'))
+    //dependsOn 'copyFrontendDev'
+    //classpath(layout.buildDirectory.dir('index-transformed'), layout.buildDirectory.dir('frontend-dev'))
 }
 
 tasks.register('copyFrontendDev', Copy) {

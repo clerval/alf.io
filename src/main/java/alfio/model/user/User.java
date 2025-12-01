@@ -35,6 +35,7 @@ public class User implements Serializable {
     private final String lastName;
     private final String emailAddress;
     private final boolean enabled;
+    private final String password;
     private final Type type;
     private final ZonedDateTime validTo;
     private final String description;
@@ -46,6 +47,7 @@ public class User implements Serializable {
                 @Column("last_name") String lastName,
                 @Column("email_address") String emailAddress,
                 @Column("enabled") boolean enabled,
+                @Column("password") String password,
                 @Column("user_type") Type type,
                 @Column("valid_to") ZonedDateTime validTo,
                 @Column("description") String description) {
@@ -55,6 +57,7 @@ public class User implements Serializable {
         this.lastName = lastName;
         this.emailAddress = emailAddress;
         this.enabled=enabled;
+        this.password = password;
         this.type = type;
         this.validTo = validTo;
         this.description = description;
